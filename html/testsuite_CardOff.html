@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>testsuite_CardOff</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>testsuite_CardOff</h1>
+<p class='attribute'><strong>Start Time:</strong> 2017-03-09 17:14:24</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:05.693000</p>
+<p class='attribute'><strong>Status:</strong> Error 1</p>
+
+<p class='description'>Test arrayCopy cardoff atomic
+
+This script will check if personalization data compliants with customer requirment.
+
+__author__ = "XH Smart Card Co,.Ltd. http://www.china-xinghan.com/smartcard/en/"
+__date__ = "Aug 2016"
+__version__ = "0.1.0"
+
+Copyright 2016 XH Smart Card Co,. Ltd
+Author: wg@china-xinghan.com
+</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>testsuite_CardOff.TestCase_05_CardOff:  测试同一条指令正常所需的时间与断电所需的时间 by 李剑锋 2017-3-9</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_05_CardOff: 测试同一条指令正常所需的时间与断电所需的时间</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        error</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: 
+reset smart card reader, 3B6800000073C84000009000
+00a4040000 ; , 
+[6F5C8408A000000003000000A550734A06072A864886FC6B01600C060A2A864886FC6B02020101630906072A864886FC6B03640B06092A864886FC6B040215650B06092B8510864864020103660C060A2B060104012A026E01029F6501FF](9000) ; 24.334 ms
+00a4040000 ; , 
+[6F5C8408A000000003000000A550734A06072A864886FC6B01600C060A2A864886FC6B02020101630906072A864886FC6B03640B06092A864886FC6B040215650B06092B8510864864020103660C060A2B060104012A026E01029F6501FF](9000) ; 23.101 ms
+8050000008 FFFFFFFFFFFFFFFF ; GP, INITIALIZE-UPDATE, 
+[000060340A77216B466BFF0202034625677363C29D7C2628142F5AA0](9000) ; 83.079 ms
+Init-update, (kdiv, kver, scpid, seq, cardchallenge, cardcryptogram, hostchallenge): ('000060340A77216B466B', 'FF', '02', '0203', '4625677363C2', '9D7C2628142F5AA0', 'FFFFFFFFFFFFFFFF')
+8482000010 0C358F2C4593D234AD8951CC4C7967A6 ; GP, EXTERNAL AUTHENTICATE, 
+[](9000) ; 56.365 ms
+80e400800e 4f0cF00000000057440203000901 ; , 
+[00](9000) ; 828.853 ms
+80E6020011 0CF0000000005744020300090100000000 ; , 
+[00](9000) ; 69.869 ms
+80E80000A0 C4820450010051DECAFFED02020400010CF000000000574402030009013A636F6D2F7761746368646174612F746573742F61746F6D69636974792F706F7765726C6F73742F696E7374616C6C706F7765726F66667465737402002100510021001F001F0092002A0262000A005D00000179091700020000000003020004001F03020107A0000000620101000107A0000000620001020107A00000006201020300 ; , 
+[00](9000) ; 618.125 ms
+80E80001A0 1F020CF0000000005744020300098100080CF00000000057440203000982007206002A000000800300FF0007010000004A0080030100010701000000860081000B040701030000018A01A801C7070262000110188C001A7A0532181D250441181D181D254104412541054132181F25181F0441258D001D29047B001E16048B00157B001E160489078F00163D8C0010181D0441181D258B00207A0221188B000D ; , 
+[00](9000) ; 684.640 ms
+80E80002A0 60037A198B000F2D1A042573000900200020000F116D008D000E7A0110188C001A7A05308F001B3D8C0022181D0441181D258B00207A0421188B000D60037A198B000F2D1A042575004B0003002000180022003400500011AD068B001C703B188F00143D8C001787061A03AD0685088D00233B1903058B0018701F1A03AD06AD0685078B000B38109B1A03258D001D8D000E116D008D000E7A0510188C001218 ; , 
+[00](9000) ; 248.667 ms
+80E80003A0 105588041810AA880918100C900B3D0310F0383D081057383D10061044383D100705383D100806383D100A1009383D100B1081388703187F001E188D0019890818AF08900B8702AD0203AD029210558D00213B18061100C0038D0013940000118705181018900B8701181018900B870A181018900B8700AD0103AD019210558D00213BAD0A03AD0A9210AA8D00213BAD05AD01038E030011057A0321AD05AD0A ; , 
+[00](9000) ; 233.916 ms
+80E80004A0 038E030011050331700BAD021E10AA385902011E1D6CF57A0311AD05AD01038E030011050330700BAD021D1055385901011DAF086CF47A0523AD0303AD03925B8D001F2DAD05AD00038E030011043B03321A663C1F100F555B32AD0003AD0A03AD00928D000C60081F1040555B320329047016AD0216042510AA6A0A1F1020555B32704E59040116041D6CE970441F10F0555B32AD05AD00038E030011043BAD ; , 
+[00](9000) ; 233.427 ms
+80E80005A0 0003AD0103AD00928D000C60081F10F4555B320329047015AD0216042510556A091F05555B32700A59040116041D6CEA1F7808000A00020001000000000000050092002402001A0902001A0702001A0402001A0A02001A0102001A0602000E0002001A0302001A0002001A0202001A0803001A0306801000038003030680070103800A010600000101820A000681000006820D0001001A0003001A0101000200 ; , 
+[00](9000) ; 317.351 ms
+80E8800694 060000E903800A08068008050680030001000E0003001A0206801005050000000680080B03800302068010030600006B0680100609005D002F37720F040210020221052D0A03040203160707070203090309020B020C10020C0A0703080214030313210209030313002A052005050307040A0707130706040A07071A06040B070D090306073B04140A04220C0A0D1E200A19370E ; , 
+[00](9000) ; 653.394 ms
+80E60C002D 0CF000000000574402030009010CF000000000574402030009820CF00000000057440203000982010002C90000 ; , 
+[00](9000) ; 277.346 ms
+reset smart card reader, 3B6800000073C84000009000
+00a4040000 ; , 
+[](6301) ; 20.731 ms
+Traceback (most recent call last):
+  File "F:\2016422\Desktop\ganggroup\release_svs-2017-2-22-0.4.3\testsuites\testsuite_CardOff.py", line 493, in test_05_CardOff
+    api_pcsc.send('00a4040000','','9000')    #为了兼容华虹自制双界面读卡器
+  File "api_pcsc.py", line 283, in send
+PCSCException: Error! Unexpected status words(6301) returned by card:
+, ,(9000)
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

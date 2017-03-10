@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>testsuite_DesKeytest</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>testsuite_DesKeytest</h1>
+<p class='attribute'><strong>Start Time:</strong> 2017-03-10 10:02:44</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:12.554000</p>
+<p class='attribute'><strong>Status:</strong> Pass 21</p>
+
+<p class='description'> 检测JavaCard标准中未明确的特性、边界条件
+
+This script will check if personalization data compliants with customer requirment.
+
+__author__ = "XH Smart Card Co,.Ltd. http://www.china-xinghan.com/smartcard/en/"
+__date__ = "Aug 2016"
+__version__ = "0.1.0"
+
+Copyright 2016 XH Smart Card Co,. Ltd
+
+Author: wg@china-xinghan.com
+</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>testsuite_DesKeytest.TestCase_DESKEY:  javacard.security.DESKey  8 type mode of paddingMode and 3 type security key        </td>
+    <td>21</td>
+    <td>21</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',21)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_00_buildKey_64des</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 24.908 ms
+0009004000 ; buildKey, 
+[](9000) ; 47.952 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_01_buildKey_128des</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.507 ms
+0009018000 ; buildKey, 
+[](9000) ; 48.221 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_02_buildKey_192des</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 22.923 ms
+000902C000 ; buildKey, 
+[](9000) ; 48.550 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_11_getInstance_ALG_DES_CBC_NOPAD</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.644 ms
+000A000100 ; buildcipher, 
+[](9000) ; 59.170 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_12_getInstance_ALG_DES_CBC_ISO9797_M1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.287 ms
+000A010200 ; buildcipher, 
+[](9000) ; 59.825 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_13_getInstance_ALG_DES_CBC_ISO9797_M2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.590 ms
+000A020300 ; buildcipher, 
+[](9000) ; 67.314 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_14_getInstance_ALG_DES_CBC_ISO9797_M1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 33.619 ms
+000A030400 ; buildcipher, 
+[](9000) ; 59.287 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_15_getInstance_ALG_DES_ECB_NOPAD</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        pass</a>
+
+    <div id='div_pt1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.8: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 24.050 ms
+000A040500 ; buildcipher, 
+[](9000) ; 43.862 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_16_getInstance_ALG_DES_ECB_ISO9797_M1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.342 ms
+000A050600 ; buildcipher, 
+[](9000) ; 44.014 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_17_getInstance_ALG_DES_ECB_ISO9797_M2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        pass</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 24.466 ms
+000A060700 ; buildcipher, 
+[](9000) ; 43.767 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_18_getInstance_ALG_DES_ECB_PKCS5</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11')" >
+        pass</a>
+
+    <div id='div_pt1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.11: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 24.246 ms
+000A070800 ; buildcipher, 
+[](9000) ; 44.018 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_19_setKey: test if setKey is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12')" >
+        pass</a>
+
+    <div id='div_pt1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.12: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.718 ms
+0000000008 0000000000000000 ; setkey, 
+[](9000) ; 38.731 ms
+0000010010 00000000000000000000000000000000 ; setkey, 
+[](9000) ; 49.136 ms
+0000020018 000000000000000000000000000000000000000000000000 ; setkey, 
+[](9000) ; 72.476 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_20_seticv: set icv</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13')" >
+        pass</a>
+
+    <div id='div_pt1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.13: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 22.983 ms
+0001000008 C837998A5395F82F ; seticv, 
+[](9000) ; 18.760 ms
+seticv success
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_22_getAlgorithm: test if supported getAlgorithm</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14')" >
+        pass</a>
+
+    <div id='div_pt1.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.14: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.574 ms
+000A000100 ; buildcipher, 
+[](9000) ; 59.124 ms
+0007000001 ; getAlgorithm, 
+[01](9000) ; 12.789 ms
+getAlgorithm success 01 call ALG_DES_CBC_NOPAD
+000A010200 ; buildcipher, 
+[](9000) ; 59.540 ms
+0007000101 ; getAlgorithm, 
+[02](9000) ; 12.579 ms
+getAlgorithm success 02 call ALG_DES_CBC_ISO9797_M1
+000A020300 ; buildcipher, 
+[](9000) ; 59.453 ms
+0007000201 ; getAlgorithm, 
+[03](9000) ; 12.928 ms
+getAlgorithm success 03 call ALG_DES_CBC_ISO9797_M2
+000A030400 ; buildcipher, 
+[](9000) ; 62.994 ms
+0007000301 ; getAlgorithm, 
+[04](9000) ; 12.552 ms
+getAlgorithm success 04 call ALG_DES_CBC_PKCS5
+000A040500 ; buildcipher, 
+[](9000) ; 49.042 ms
+0007000401 ; getAlgorithm, 
+[05](9000) ; 12.377 ms
+getAlgorithm success 05 call ALG_DES_ECB_NOPAD
+000A050600 ; buildcipher, 
+[](9000) ; 43.559 ms
+0007000501 ; getAlgorithm, 
+[06](9000) ; 12.504 ms
+getAlgorithm success 06 call ALG_DES_ECB_ISO9797_M1
+000A060700 ; buildcipher, 
+[](9000) ; 43.766 ms
+0007000601 ; getAlgorithm, 
+[07](9000) ; 12.478 ms
+getAlgorithm success 07 call ALG_DES_ECB_ISO9797_M2
+000A070800 ; buildcipher, 
+[](9000) ; 44.038 ms
+0007000701 ; getAlgorithm, 
+[08](9000) ; 12.710 ms
+getAlgorithm success 08 call ALG_DES_ECB_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_23_initEnc_cbc: test if init is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.15')" >
+        pass</a>
+
+    <div id='div_pt1.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.15: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.285 ms
+0002000000 ; chooseKey, 
+[](9000) ; 9.993 ms
+0003000000 ; initEnc, 
+[](9000) ; 14.871 ms
+init enc_cbc success ALG_DES_CBC_NOPAD
+0002010000 ; chooseKey, 
+[](9000) ; 14.385 ms
+0003000000 ; initEnc, 
+[](9000) ; 15.031 ms
+init enc_cbc success ALG_DES_CBC_NOPAD
+0002020000 ; chooseKey, 
+[](9000) ; 13.095 ms
+0003000000 ; initEnc, 
+[](9000) ; 14.666 ms
+init enc_cbc success ALG_DES_CBC_NOPAD
+0002000000 ; chooseKey, 
+[](9000) ; 13.366 ms
+0003000100 ; initEnc, 
+[](9000) ; 18.345 ms
+init enc_cbc success ALG_DES_CBC_ISO9797_M1
+0002010000 ; chooseKey, 
+[](9000) ; 20.368 ms
+0003000100 ; initEnc, 
+[](9000) ; 18.582 ms
+init enc_cbc success ALG_DES_CBC_ISO9797_M1
+0002020000 ; chooseKey, 
+[](9000) ; 13.362 ms
+0003000100 ; initEnc, 
+[](9000) ; 15.275 ms
+init enc_cbc success ALG_DES_CBC_ISO9797_M1
+0002000000 ; chooseKey, 
+[](9000) ; 13.225 ms
+0003000200 ; initEnc, 
+[](9000) ; 17.941 ms
+init enc_cbc success ALG_DES_CBC_ISO9797_M2
+0002010000 ; chooseKey, 
+[](9000) ; 12.891 ms
+0003000200 ; initEnc, 
+[](9000) ; 14.679 ms
+init enc_cbc success ALG_DES_CBC_ISO9797_M2
+0002020000 ; chooseKey, 
+[](9000) ; 12.865 ms
+0003000200 ; initEnc, 
+[](9000) ; 14.621 ms
+init enc_cbc success ALG_DES_CBC_ISO9797_M2
+0002000000 ; chooseKey, 
+[](9000) ; 12.886 ms
+0003000300 ; initEnc, 
+[](9000) ; 21.474 ms
+init enc_cbc success ALG_DES_CBC_PKCS5
+0002010000 ; chooseKey, 
+[](9000) ; 12.830 ms
+0003000300 ; initEnc, 
+[](9000) ; 14.680 ms
+init enc_cbc success ALG_DES_CBC_PKCS5
+0002020000 ; chooseKey, 
+[](9000) ; 13.171 ms
+0003000300 ; initEnc, 
+[](9000) ; 15.710 ms
+init enc_cbc success ALG_DES_CBC_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_24_initEnc_ebc: test if init is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.16')" >
+        pass</a>
+
+    <div id='div_pt1.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.16: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.219 ms
+0002000000 ; chooseKey, 
+[](9000) ; 12.935 ms
+0003010400 ; initEnc, 
+[](9000) ; 19.891 ms
+init enc_ecb success ALG_DES_ECB_NOPAD
+0002010000 ; chooseKey, 
+[](9000) ; 12.967 ms
+0003010400 ; initEnc, 
+[](9000) ; 14.313 ms
+init enc_ecb success ALG_DES_ECB_NOPAD
+0002020000 ; chooseKey, 
+[](9000) ; 13.510 ms
+0003010400 ; initEnc, 
+[](9000) ; 14.453 ms
+init enc_ecb success ALG_DES_ECB_NOPAD
+0002000000 ; chooseKey, 
+[](9000) ; 13.338 ms
+0003010500 ; initEnc, 
+[](9000) ; 17.673 ms
+init enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002010000 ; chooseKey, 
+[](9000) ; 13.755 ms
+0003010500 ; initEnc, 
+[](9000) ; 14.534 ms
+init enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002020000 ; chooseKey, 
+[](9000) ; 13.493 ms
+0003010500 ; initEnc, 
+[](9000) ; 14.660 ms
+init enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002000000 ; chooseKey, 
+[](9000) ; 13.667 ms
+0003010600 ; initEnc, 
+[](9000) ; 17.629 ms
+init enc_ecb success ALG_DES_ECB_ISO9797_M2
+0002010000 ; chooseKey, 
+[](9000) ; 13.438 ms
+0003010600 ; initEnc, 
+[](9000) ; 14.499 ms
+init enc_ecb success ALG_DES_ECB_ISO9797_M2
+0002020000 ; chooseKey, 
+[](9000) ; 13.377 ms
+0003010600 ; initEnc, 
+[](9000) ; 14.616 ms
+init enc_ecb success ALG_DES_ECB_ISO9797_M2
+0002000000 ; chooseKey, 
+[](9000) ; 14.359 ms
+0003010700 ; initEnc, 
+[](9000) ; 17.970 ms
+init enc_ecb success ALG_DES_ECB_PKCS5
+0002010000 ; chooseKey, 
+[](9000) ; 13.416 ms
+0003010700 ; initEnc, 
+[](9000) ; 14.484 ms
+init enc_ecb success ALG_DES_ECB_PKCS5
+0002020000 ; chooseKey, 
+[](9000) ; 13.340 ms
+0003010700 ; initEnc, 
+[](9000) ; 14.545 ms
+init enc_ecb success ALG_DES_ECB_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_25_dofinal_cbc: test if dofinal is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.17')" >
+        pass</a>
+
+    <div id='div_pt1.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.17: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.242 ms
+0002000000 ; chooseKey, 
+[](9000) ; 12.983 ms
+0003010400 ; initEnc, 
+[](9000) ; 17.257 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D0](9000) ; 21.524 ms
+dofinal enc_cbc success ALG_DES_ECB_NOPAD
+0002010000 ; chooseKey, 
+[](9000) ; 13.447 ms
+0003010400 ; initEnc, 
+[](9000) ; 14.437 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D0](9000) ; 22.050 ms
+dofinal enc_cbc success ALG_DES_ECB_NOPAD
+0002020000 ; chooseKey, 
+[](9000) ; 13.324 ms
+0003010400 ; initEnc, 
+[](9000) ; 14.405 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D0](9000) ; 21.861 ms
+dofinal enc_cbc success ALG_DES_ECB_NOPAD
+0002000000 ; chooseKey, 
+[](9000) ; 13.475 ms
+0003010500 ; initEnc, 
+[](9000) ; 17.735 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D0](9000) ; 22.456 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M1
+0002010000 ; chooseKey, 
+[](9000) ; 13.409 ms
+0003010500 ; initEnc, 
+[](9000) ; 14.497 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D0](9000) ; 21.737 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M1
+0002020000 ; chooseKey, 
+[](9000) ; 13.443 ms
+0003010500 ; initEnc, 
+[](9000) ; 14.402 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D0](9000) ; 21.928 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M1
+0002000000 ; chooseKey, 
+[](9000) ; 13.469 ms
+0003010600 ; initEnc, 
+[](9000) ; 17.724 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D095F8A5E5DD31D900](9000) ; 21.834 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M2
+0002010000 ; chooseKey, 
+[](9000) ; 13.554 ms
+0003010600 ; initEnc, 
+[](9000) ; 14.541 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D095F8A5E5DD31D900](9000) ; 22.331 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M2
+0002020000 ; chooseKey, 
+[](9000) ; 17.558 ms
+0003010600 ; initEnc, 
+[](9000) ; 14.200 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D095F8A5E5DD31D900](9000) ; 22.030 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M2
+0002000000 ; chooseKey, 
+[](9000) ; 13.275 ms
+0003010700 ; initEnc, 
+[](9000) ; 17.502 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D07E422822773666C0](9000) ; 21.448 ms
+dofinal enc_cbc success ALG_DES_ECB_PKCS5
+0002010000 ; chooseKey, 
+[](9000) ; 13.511 ms
+0003010700 ; initEnc, 
+[](9000) ; 14.728 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D07E422822773666C0](9000) ; 22.127 ms
+dofinal enc_cbc success ALG_DES_ECB_PKCS5
+0002020000 ; chooseKey, 
+[](9000) ; 13.334 ms
+0003010700 ; initEnc, 
+[](9000) ; 14.397 ms
+0005000008 3987F2B898B094A8 ; dofinal, 
+[57F9832796CB84D07E422822773666C0](9000) ; 22.366 ms
+dofinal enc_cbc success ALG_DES_ECB_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_26_dofinal_ecb: test if dofinal is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18')" >
+        pass</a>
+
+    <div id='div_pt1.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.18: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.168 ms
+0002000000 ; chooseKey, 
+[](9000) ; 12.897 ms
+0003010400 ; initEnc, 
+[](9000) ; 17.190 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE](9000) ; 22.043 ms
+dofinal enc_ecb success ALG_DES_ECB_NOPAD
+0002010000 ; chooseKey, 
+[](9000) ; 13.576 ms
+0003010400 ; initEnc, 
+[](9000) ; 14.467 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE](9000) ; 22.149 ms
+dofinal enc_ecb success ALG_DES_ECB_NOPAD
+0002020000 ; chooseKey, 
+[](9000) ; 13.829 ms
+0003010400 ; initEnc, 
+[](9000) ; 14.570 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE](9000) ; 21.908 ms
+dofinal enc_ecb success ALG_DES_ECB_NOPAD
+0002000000 ; chooseKey, 
+[](9000) ; 13.473 ms
+0003010500 ; initEnc, 
+[](9000) ; 19.039 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE](9000) ; 21.575 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002010000 ; chooseKey, 
+[](9000) ; 13.426 ms
+0003010500 ; initEnc, 
+[](9000) ; 14.556 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE](9000) ; 21.686 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002020000 ; chooseKey, 
+[](9000) ; 13.944 ms
+0003010500 ; initEnc, 
+[](9000) ; 14.877 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE](9000) ; 21.761 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002000000 ; chooseKey, 
+[](9000) ; 13.453 ms
+0003010600 ; initEnc, 
+[](9000) ; 19.204 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE95F8A5E5DD31D900](9000) ; 21.750 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M2
+0002010000 ; chooseKey, 
+[](9000) ; 13.555 ms
+0003010600 ; initEnc, 
+[](9000) ; 14.162 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE95F8A5E5DD31D900](9000) ; 21.704 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M2
+0002020000 ; chooseKey, 
+[](9000) ; 13.118 ms
+0003010600 ; initEnc, 
+[](9000) ; 14.123 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE95F8A5E5DD31D900](9000) ; 21.990 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M2
+0002000000 ; chooseKey, 
+[](9000) ; 13.400 ms
+0003010700 ; initEnc, 
+[](9000) ; 17.743 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE7E422822773666C0](9000) ; 21.536 ms
+dofinal enc_ecb success ALG_DES_ECB_PKCS5
+0002010000 ; chooseKey, 
+[](9000) ; 13.077 ms
+0003010700 ; initEnc, 
+[](9000) ; 14.285 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE7E422822773666C0](9000) ; 22.109 ms
+dofinal enc_ecb success ALG_DES_ECB_PKCS5
+0002020000 ; chooseKey, 
+[](9000) ; 13.557 ms
+0003010700 ; initEnc, 
+[](9000) ; 14.508 ms
+0005000008 94F60DE918A20E00 ; dofinal, 
+[C8EE17108774D2AE7E422822773666C0](9000) ; 22.267 ms
+dofinal enc_ecb success ALG_DES_ECB_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_27_dec_dofinal_cbc: test if dofinal is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19')" >
+        pass</a>
+
+    <div id='div_pt1.19' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.19').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.19: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 24.995 ms
+0002000000 ; chooseKey, 
+[](9000) ; 14.066 ms
+0004010400 ; initDec, 
+[](9000) ; 18.053 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[904E405C5F284E2A](9000) ; 21.486 ms
+dofinal enc_cbc success ALG_DES_ECB_NOPAD
+0002010000 ; chooseKey, 
+[](9000) ; 13.405 ms
+0004010400 ; initDec, 
+[](9000) ; 14.451 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[904E405C5F284E2A](9000) ; 21.657 ms
+dofinal enc_cbc success ALG_DES_ECB_NOPAD
+0002020000 ; chooseKey, 
+[](9000) ; 15.205 ms
+0004010400 ; initDec, 
+[](9000) ; 14.503 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[904E405C5F284E2A](9000) ; 21.761 ms
+dofinal enc_cbc success ALG_DES_ECB_NOPAD
+0002000000 ; chooseKey, 
+[](9000) ; 13.451 ms
+0004010500 ; initDec, 
+[](9000) ; 17.744 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[904E405C5F284E2A](9000) ; 21.401 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M1
+0002010000 ; chooseKey, 
+[](9000) ; 14.709 ms
+0004010500 ; initDec, 
+[](9000) ; 15.689 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[904E405C5F284E2A](9000) ; 21.652 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M1
+0002020000 ; chooseKey, 
+[](9000) ; 13.495 ms
+0004010500 ; initDec, 
+[](9000) ; 14.431 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[904E405C5F284E2A](9000) ; 21.994 ms
+dofinal enc_cbc success ALG_DES_ECB_ISO9797_M1
+0002000000 ; chooseKey, 
+[](9000) ; 13.604 ms
+0004010600 ; initDec, 
+[](9000) ; 17.652 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[](6F00) ; 22.758 ms
+dafinal enc_cbc fail ALG_DES_ECB_ISO9797_M2
+0002010000 ; chooseKey, 
+[](9000) ; 13.400 ms
+0004010600 ; initDec, 
+[](9000) ; 14.470 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[](6F00) ; 24.020 ms
+dafinal enc_cbc fail ALG_DES_ECB_ISO9797_M2
+0002020000 ; chooseKey, 
+[](9000) ; 13.433 ms
+0004010600 ; initDec, 
+[](9000) ; 14.488 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[](6F00) ; 23.157 ms
+dafinal enc_cbc fail ALG_DES_ECB_ISO9797_M2
+0002000000 ; chooseKey, 
+[](9000) ; 13.679 ms
+0004010700 ; initDec, 
+[](9000) ; 17.737 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[](6F00) ; 22.499 ms
+dafinal enc_cbc fail ALG_DES_ECB_PKCS5
+0002010000 ; chooseKey, 
+[](9000) ; 13.604 ms
+0004010700 ; initDec, 
+[](9000) ; 14.527 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[](6F00) ; 23.357 ms
+dafinal enc_cbc fail ALG_DES_ECB_PKCS5
+0002020000 ; chooseKey, 
+[](9000) ; 13.533 ms
+0004010700 ; initDec, 
+[](9000) ; 14.467 ms
+0005000008 3A38DC2D6AC2FF55 ; dofinal, 
+[](6F00) ; 23.412 ms
+dafinal enc_cbc fail ALG_DES_ECB_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_28_dec_dofinal_ecb: test if dofinal is supported</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.20')" >
+        pass</a>
+
+    <div id='div_pt1.20' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.20').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.20: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.945 ms
+0002000000 ; chooseKey, 
+[](9000) ; 14.851 ms
+0004010400 ; initDec, 
+[](9000) ; 17.835 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[9DBCCD3CEF8CDE0B](9000) ; 20.859 ms
+dofinal enc_ecb success ALG_DES_ECB_NOPAD
+0002010000 ; chooseKey, 
+[](9000) ; 12.924 ms
+0004010400 ; initDec, 
+[](9000) ; 14.102 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[9DBCCD3CEF8CDE0B](9000) ; 21.284 ms
+dofinal enc_ecb success ALG_DES_ECB_NOPAD
+0002020000 ; chooseKey, 
+[](9000) ; 13.849 ms
+0004010400 ; initDec, 
+[](9000) ; 14.415 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[9DBCCD3CEF8CDE0B](9000) ; 21.840 ms
+dofinal enc_ecb success ALG_DES_ECB_NOPAD
+0002000000 ; chooseKey, 
+[](9000) ; 13.576 ms
+0004010500 ; initDec, 
+[](9000) ; 17.723 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[9DBCCD3CEF8CDE0B](9000) ; 46.329 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002010000 ; chooseKey, 
+[](9000) ; 15.793 ms
+0004010500 ; initDec, 
+[](9000) ; 14.764 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[9DBCCD3CEF8CDE0B](9000) ; 21.110 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002020000 ; chooseKey, 
+[](9000) ; 12.941 ms
+0004010500 ; initDec, 
+[](9000) ; 14.009 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[9DBCCD3CEF8CDE0B](9000) ; 21.481 ms
+dofinal enc_ecb success ALG_DES_ECB_ISO9797_M1
+0002000000 ; chooseKey, 
+[](9000) ; 13.476 ms
+0004010600 ; initDec, 
+[](9000) ; 17.759 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[](6F00) ; 22.630 ms
+dafinal enc_ecb fail ALG_DES_ECB_ISO9797_M2
+0002010000 ; chooseKey, 
+[](9000) ; 13.478 ms
+0004010600 ; initDec, 
+[](9000) ; 14.563 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[](6F00) ; 22.881 ms
+dafinal enc_ecb fail ALG_DES_ECB_ISO9797_M2
+0002020000 ; chooseKey, 
+[](9000) ; 13.594 ms
+0004010600 ; initDec, 
+[](9000) ; 14.917 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[](6F00) ; 23.572 ms
+dafinal enc_ecb fail ALG_DES_ECB_ISO9797_M2
+0002000000 ; chooseKey, 
+[](9000) ; 13.593 ms
+0004010700 ; initDec, 
+[](9000) ; 17.908 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[](6F00) ; 22.620 ms
+dafinal enc_ecb fail ALG_DES_ECB_PKCS5
+0002010000 ; chooseKey, 
+[](9000) ; 13.578 ms
+0004010700 ; initDec, 
+[](9000) ; 15.019 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[](6F00) ; 22.904 ms
+dafinal enc_ecb fail ALG_DES_ECB_PKCS5
+0002020000 ; chooseKey, 
+[](9000) ; 13.308 ms
+0004010700 ; initDec, 
+[](9000) ; 14.401 ms
+0005000008 1ECBA2BBD7D6CD42 ; dofinal, 
+[](6F00) ; 23.874 ms
+dafinal enc_ecb fail ALG_DES_ECB_PKCS5
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_29_clearKey: test if supported clearKey</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.21')" >
+        pass</a>
+
+    <div id='div_pt1.21' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.21').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.21: 
+00A4040006 010203040506 ; GP, Select AID, 
+[080300](9000) ; 23.116 ms
+0008000000 ; clearKey, 
+[](9000) ; 13.454 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.070 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.059 ms
+0008000000 ; clearKey, 
+[](9000) ; 9.940 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.047 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.236 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.099 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.044 ms
+0008000000 ; clearKey, 
+[](9000) ; 9.994 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.102 ms
+0008000000 ; clearKey, 
+[](9000) ; 11.544 ms
+0008000000 ; clearKey, 
+[](9000) ; 10.526 ms
+0008010000 ; clearKey, 
+[](9000) ; 13.795 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.179 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.174 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.409 ms
+0008010000 ; clearKey, 
+[](9000) ; 11.188 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.592 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.448 ms
+0008010000 ; clearKey, 
+[](9000) ; 19.828 ms
+0008010000 ; clearKey, 
+[](9000) ; 11.278 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.286 ms
+0008010000 ; clearKey, 
+[](9000) ; 10.182 ms
+0008010000 ; clearKey, 
+[](9000) ; 9.934 ms
+0008020000 ; clearKey, 
+[](9000) ; 13.052 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.254 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.674 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.693 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.395 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.167 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.134 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.284 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.185 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.145 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.207 ms
+0008020000 ; clearKey, 
+[](9000) ; 10.087 ms
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>21</td>
+    <td>21</td>
+    <td>0</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
